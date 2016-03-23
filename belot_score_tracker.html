@@ -17,15 +17,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Belot Score Tracker</title>
         <link rel="stylesheet" href="foundation-6/css/foundation.css" />
+        <script src="modernizr.js"></script>
     </head>
     <body>
 
-        <div class="row" style="padding-top: 2%; text-align: center;">
-            <div class="small-12 columns">
-                <h1>Belot</h1>
-            </div>
+        <div class="title-bar " data-responsive-toggle="example-menu" data-hide-for="medium">
+          <button class="menu-icon" type="button" data-toggle></button>
+          <div class="title-bar-title ">Belot</div>
         </div>
 
+        <div class="top-bar" id="example-menu">
+          <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+              <li><a href="#">New Game</a></li>
+            </ul>
+          </div>
+        </div>
         <div class="row">
             <div class="large-6 medium-6 small-12 columns">
                 <div class="row">
@@ -44,25 +51,74 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="large-6 medium-6 small-12 columns">
-                <a href="#" data-reveal-id="firstModal" class="radius button">Modal in a modal&hellip;</a>
-            </div>
-        </div>
+        <!-- Opens a Modal/Form to start a new bet -->
+        <a data-open="newBet" class="button expanded ">New Bet</a>
+        <div class="reveal" id="newBet" data-reveal>
+            <form data-abide novalidate="">
+                <!-- Contract row -->
+                <div class="row">
+                    <div class="small-12 columns">
+                          <label>Contract
+                                <input type="number" min="80" value="80" placeholder="80" aria-describedby="exampleHelpText" required>
+                                <span class="form-error">
+                                  Enter a bet
+                                </span>
+                          </label>
+                    </div>
+                </div>
+                <!-- Attacker/Suit row -->
+                <div>
+                    <div class="small-6 columns">
+                        <label>Attacker
+                            <select id="select" required>
+                                <option value=""></option>
+                                <option value="Team1">Team1</option>
+                                <option value="Team2">Team2</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="small-6 columns">
+                        <label>Suit
+                            <select id="select" required>
+                                <option value=""></option>
+                                <option value="s">Spade</option>
+                                <option value="d">Diamond</option>
+                                <option value="c">Club</option>
+                                <option value="h">Heart</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
 
-        <div id="firstModal" class="reveal-modal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
-          <h2 id="firstModalTitle">This is a modal.</h2>
-          <p>Reveal makes these very easy to summon and dismiss. The close button is simply an anchor with a unicode character icon and a class of <code>close-reveal-modal</code>. Clicking anywhere outside the modal will also dismiss it.</p>
-          <p>Finally, if your modal summons another Reveal modal, the plugin will handle that for you gracefully.</p>
-          <p><a href="#" data-reveal-id="secondModal" class="secondary button">Second Modal...</a></p>
-          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+
+                <div class="row">
+                    <fieldset class="small-12 columns">
+                        <input id="coincher"    type="checkbox"><label for="coincher">Coincher</label>
+                        <input id="surcoincher" type="checkbox"><label for="surcoincher">Sur-Coincher</label>
+                    </fieldset>
+                </div>
+
+                <!-- Submit data or Reset all input fields -->
+                <div class="row">
+                    <fieldset class="small-6 columns">
+                        <button class="button expanded" type="submit" value="Submit">Submit</button>
+                    </fieldset>
+                    <fieldset class="small-6 columns">
+                        <button class="button expanded" type="reset" value="Reset">Reset</button>
+                    </fieldset>
+                </div>
+            </form>
+
+            <!-- Modal close button -->
+            <button class="close-button" data-close aria-label="Close reveal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
 
         <br/><br/>
         
         <script src="clipboard.min.js"></script>
-        <script src="min.belot.js"></script>
-        
+        <script src="belot.min.js"></script>
         <script src="foundation-6/js/vendor/jquery.min.js"></script>
         <script src="foundation-6/js/vendor/what-input.min.js"></script>
         <script src="foundation-6/js/foundation.min.js"></script>
