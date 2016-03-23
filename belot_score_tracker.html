@@ -21,35 +21,32 @@
     </head>
     <body>
 
-        <div class="title-bar " data-responsive-toggle="example-menu" data-hide-for="medium">
-          <button class="menu-icon" type="button" data-toggle></button>
-          <div class="title-bar-title ">Belot</div>
-        </div>
-
-        <div class="top-bar" id="example-menu">
-          <div class="top-bar-left">
-            <ul class="dropdown menu" data-dropdown-menu>
-              <li><a href="#">New Game</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="row">
-            <div class="large-6 medium-6 small-12 columns">
-                <div class="row">
-                    <div class="large-12 columns">
-                      <label>Unencrypted
-                        <textarea id="unencrypted" placeholder="Text to be encrypted" style="height:75px" ></textarea>
-                      </label>
-                    </div>
-                    <div class="large-6  small-6  columns">
-                        <button  class="button  expand" onclick="encryptText()">Encrypt</button>
-                    </div>
-                    <div class="large-6  small-6  columns">
-                        <button  class="btn button expand alert" data-clipboard-action="cut" data-clipboard-target="#unencrypted" style="float:right;">Cut / Copy</button>
-                    </div>
-                </div>
+        <div class="title-bar">
+            <div class="title-bar-left">
+                <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+                <span class="title-bar-title">Belot</span>
             </div>
         </div>
+        <br/>
+
+        <table>
+            <thead>
+                <tr>
+                    <th width="150" class="text-center">Attacker</th>
+                    <th width="150" class="text-center">Suit</th>
+                    <th width="150" class="text-center">Contract</th>
+                    <th width="150" class="text-center">Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center">Team1</td>
+                    <td class="text-center">Heart</td>
+                    <td class="text-center">100</td>
+                    <td class="text-center">Pass</td>
+                </tr>
+            </tbody>
+        </table>
 
         <!-- Opens a Modal/Form to start a new bet -->
         <a data-open="newBet" class="button expanded ">New Bet</a>
