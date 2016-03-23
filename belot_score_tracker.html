@@ -59,7 +59,7 @@
                 <div class="row">
                     <div class="small-12 columns">
                           <label>Contract
-                                <input type="number" min="80" value="80" placeholder="80" aria-describedby="exampleHelpText" required>
+                                <input type="number" min="80" placeholder="80" aria-describedby="exampleHelpText" required>
                                 <span class="form-error">
                                   Enter a bet
                                 </span>
@@ -92,16 +92,21 @@
 
 
                 <div class="row">
-                    <fieldset class="small-12 columns">
-                        <input id="coincher"    type="checkbox"><label for="coincher">Coincher</label>
-                        <input id="surcoincher" type="checkbox"><label for="surcoincher">Sur-Coincher</label>
-                    </fieldset>
+                    <div class="small-6 columns">
+                        <label>Special
+                            <select id="select">
+                                <option value=""></option>
+                                <option value="c">Coincher</option>
+                                <option value="s">Sur-Coincher</option>
+                            </select>
+                        </label>
+                    </div>
                 </div>
 
                 <!-- Submit data or Reset all input fields -->
                 <div class="row">
                     <fieldset class="small-6 columns">
-                        <button class="button expanded" type="submit" value="Submit">Submit</button>
+                        <button class="button expanded">Done</button>
                     </fieldset>
                     <fieldset class="small-6 columns">
                         <button class="button expanded" type="reset" value="Reset">Reset</button>
