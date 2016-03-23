@@ -54,6 +54,7 @@
         <!-- Opens a Modal/Form to start a new bet -->
         <a data-open="newBet" class="button expanded ">New Bet</a>
         <div class="reveal" id="newBet" data-reveal>
+        <br/>
             <form data-abide novalidate="">
                 <!-- Contract row -->
                 <div class="row">
@@ -66,7 +67,6 @@
                           </label>
                     </div>
                 </div>
-                <!-- Attacker/Suit row -->
                 <div>
                     <div class="small-6 columns">
                         <label>Attacker
@@ -89,15 +89,22 @@
                         </label>
                     </div>
                 </div>
-
-
                 <div class="row">
                     <div class="small-6 columns">
                         <label>Special
                             <select id="select">
                                 <option value=""></option>
-                                <option value="c">Coincher</option>
-                                <option value="s">Sur-Coincher</option>
+                                <option value="coincher">Coincher</option>
+                                <option value="sur-coincher">Sur-Coincher</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="small-6 columns">
+                        <label>Result
+                            <select id="select">
+                                <option value=""></option>
+                                <option value="pass">Pass</option>
+                                <option value="fail">Fail</option>
                             </select>
                         </label>
                     </div>
