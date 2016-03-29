@@ -35,7 +35,23 @@
                 </div>
                 <div class="top-bar-right">
                     <ul class="menu">
-                        <li><a class="button expand">New Game</a></li>
+                        <li><a data-open="new_game_check" class="button expanded">New Game</a></li>
+                        <div class="reveal" id="new_game_check" data-reveal>
+                            <h3 class="text-center">Create a new game?</h3>
+                            <div class="row">
+                                <div class="small-6 columns">
+                                    <a class="button  expanded">Yes</a>
+                                </div>
+                                <div class="small-6 columns">
+                                    <a class="button secondary expanded" data-close>Cancel</a>
+                                </div>
+                            </div>
+
+
+                          <button class="close-button" data-close aria-label="Close modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -117,10 +133,10 @@
 
                     <div class="row">
                         <div class="small-6 columns text-center">
-                            <span class="label secondary">Team1</span>
+                            <h2><b>Team1</b></h2>
                         </div>
                         <div class="small-6 columns text-center ">
-                            <span class="label secondary">Team2</span>
+                            <h2><b>Team2</b></h2>
                         </div>
                     </div>
 
@@ -162,7 +178,7 @@
                             <button class="button expanded" id="done">Done</button>
                         </fieldset>
                         <fieldset class="small-6 columns">
-                            <button class="button expanded" type="reset" value="Reset">Reset</button>
+                            <button class="button expanded alert" type="reset" value="Reset">Reset</button>
                         </fieldset>
                     </div>
                 </form>
