@@ -20,108 +20,157 @@
         <script src="modernizr.js"></script>
     </head>
     <body>
-
-        <div class="title-bar">
-            <div class="title-bar-left">
-                <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
-                <span class="title-bar-title">Belot</span>
+        <div class="large-6 medium-6 small-12">
+            <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+              <button class="menu-icon" type="button" data-toggle></button>
+              <div class="title-bar-title">Belot Score Tracker</div>
             </div>
-        </div>
-        <br/>
 
-        <table>
-            <thead>
-                <tr>
-                    <th width="150" class="text-center">Attacker</th>
-                    <th width="150" class="text-center">Suit</th>
-                    <th width="150" class="text-center">Contract</th>
-                    <th width="150" class="text-center">Result</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="text-center">Team1</td>
-                    <td class="text-center">Heart</td>
-                    <td class="text-center">100</td>
-                    <td class="text-center">Pass</td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="top-bar" id="example-menu">
+                <div class="top-bar-left">
+                    <ul class="dropdown vertical medium-horizontal menu" data-dropdown-menu>
+                      <li class="menu-text">Belot Score Tracker</li>
+                    </ul>
+                </div>
+                <div class="top-bar-right">
+                    <ul class="menu">
+                        <li><a class="button expand">New Game</a></li>
+                    </ul>
+                </div>
+            </div>
+            <br/>
 
-        <!-- Opens a Modal/Form to start a new bet -->
-        <a data-open="newBet" class="button expanded ">New Bet</a>
-        <div class="reveal" id="newBet" data-reveal>
-        <br/>
-            <form data-abide novalidate="">
-                <!-- Contract row -->
-                <div class="row">
-                    <div class="small-12 columns">
-                          <label>Contract
-                                <input type="number" min="80" placeholder="80" aria-describedby="exampleHelpText" required>
-                                <span class="form-error">
-                                  Enter a bet
-                                </span>
-                          </label>
-                    </div>
-                </div>
-                <div>
-                    <div class="small-6 columns">
-                        <label>Attacker
-                            <select id="select" required>
-                                <option value=""></option>
-                                <option value="Team1">Team1</option>
-                                <option value="Team2">Team2</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div class="small-6 columns">
-                        <label>Suit
-                            <select id="select" required>
-                                <option value=""></option>
-                                <option value="s">Spade</option>
-                                <option value="d">Diamond</option>
-                                <option value="c">Club</option>
-                                <option value="h">Heart</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="small-6 columns">
-                        <label>Special
-                            <select id="select">
-                                <option value=""></option>
-                                <option value="coincher">Coincher</option>
-                                <option value="sur-coincher">Sur-Coincher</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div class="small-6 columns">
-                        <label>Result
-                            <select id="select">
-                                <option value=""></option>
-                                <option value="pass">Pass</option>
-                                <option value="fail">Fail</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
+            <table role="grid" id="score_table">
+                <thead>
+                    <tr>
+                        <th class="text-center">Bet</th>
+                        <th class="text-center">Suit</th>
+                        <th class="text-center">Team1</th>
+                        <th class="text-center">Team2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">100</td>
+                        <td class="text-center">Heart</td>
+                        <td class="text-center" style="background-color: lightgreen">100</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">100</td>
+                        <td class="text-center">Diamond</td>
+                        <td class="text-center">100</td>
+                        <td class="text-center" style="background-color: lightpink">0</td>
+                    </tr>
+                </tbody>
+            </table>
 
-                <!-- Submit data or Reset all input fields -->
-                <div class="row">
-                    <fieldset class="small-6 columns">
-                        <button class="button expanded">Done</button>
-                    </fieldset>
-                    <fieldset class="small-6 columns">
-                        <button class="button expanded" type="reset" value="Reset">Reset</button>
-                    </fieldset>
-                </div>
-            </form>
+            <!-- Opens a Modal/Form to start a new bet -->
+            <a data-open="newBet" class="button expanded ">New Bet</a>
+            <div class="reveal" id="newBet" data-reveal>
+            <br/>
+                <form data-abide novalidate="">
+                    <!-- Contract row -->
+                    <div class="row">
+                        <div class="small-6 columns">
+                              <label>Contract
+                                    <input type="number" min="80" placeholder="80" aria-describedby="exampleHelpText" required>
+                                    <span class="form-error">
+                                      Enter a bet
+                                    </span>
+                              </label>
+                        </div>
+                        <div class="small-6 columns">
+                            <label>Attacker
+                                <select id="select" required>
+                                    <option value=""></option>
+                                    <option value="Team1">Team1</option>
+                                    <option value="Team2">Team2</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <label>Suit
+                                <select id="select" required>
+                                    <option value=""></option>
+                                    <option value="s">Spade</option>
+                                    <option value="d">Diamond</option>
+                                    <option value="c">Club</option>
+                                    <option value="h">Heart</option>
+                                    <option value="h">No Suit</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="small-6 columns">
+                            <label>Special
+                                <select id="select">
+                                    <option value=""></option>
+                                    <option value="coincher">Coincher</option>
+                                    <option value="sur-coincher">Sur-Coincher</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
 
-            <!-- Modal close button -->
-            <button class="close-button" data-close aria-label="Close reveal" type="button">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                    <div class="row">
+                        <div class="small-6 columns text-center">
+                            <span class="secondary">Team1</span>
+                        </div>
+                        <div class="small-6 columns text-center">
+                            <span class="secondary">Team2</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <label>Points
+                                <input type="number" min="0" placeholder="0" aria-describedby="exampleHelpText" required>
+                                    <span class="form-error">
+                                      Enter points
+                                    </span>
+                            </label>
+                        </div>
+                        <div class="small-6 columns">
+                            <label>Points
+                                <input type="number" min="0" placeholder="0" aria-describedby="exampleHelpText" required>
+                                    <span class="form-error">
+                                      Enter points
+                                    </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <label>Bonus
+                                <input type="number" min="0" placeholder="0" aria-describedby="exampleHelpText">
+                            </label>
+                        </div>
+                        <div class="small-6 columns">
+                            <label>Bonus
+                                <input type="number" min="0" placeholder="0" aria-describedby="exampleHelpText">
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit data or Reset all input fields -->
+                    <div class="row">
+                        <fieldset class="small-6 columns">
+                            <button class="button expanded" id="done">Done</button>
+                        </fieldset>
+                        <fieldset class="small-6 columns">
+                            <button class="button expanded" type="reset" value="Reset">Reset</button>
+                        </fieldset>
+                    </div>
+                </form>
+
+                <!-- Modal close button -->
+                <button class="close-button" data-close aria-label="Close reveal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         </div>
 
         <br/><br/>
