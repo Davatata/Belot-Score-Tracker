@@ -17,6 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Belot Score Tracker</title>
         <link rel="stylesheet" href="foundation-6/css/foundation.css" />
+        <link rel="stylesheet" href="belote_styles.css" />
         <script src="modernizr.js"></script>
     </head>
     <body>
@@ -29,7 +30,7 @@
             <div class="top-bar" id="example-menu">
                 <div class="top-bar-left">
                     <ul class="dropdown vertical medium-horizontal menu" data-dropdown-menu>
-                      <li class="menu-text">Belot Score Tracker</li>
+                      <li class="menu-text hidden">Belot Score Tracker</li>
                     </ul>
                 </div>
                 <div class="top-bar-right">
@@ -50,13 +51,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr class="back_white">
                         <td class="text-center">100</td>
                         <td class="text-center">Heart</td>
                         <td class="text-center" style="background-color: lightgreen">100</td>
                         <td class="text-center">0</td>
                     </tr>
-                    <tr>
+                    <tr class="back_white">
                         <td class="text-center">100</td>
                         <td class="text-center">Diamond</td>
                         <td class="text-center">100</td>
@@ -116,10 +117,10 @@
 
                     <div class="row">
                         <div class="small-6 columns text-center">
-                            <span class="secondary">Team1</span>
+                            <span class="label secondary">Team1</span>
                         </div>
-                        <div class="small-6 columns text-center">
-                            <span class="secondary">Team2</span>
+                        <div class="small-6 columns text-center ">
+                            <span class="label secondary">Team2</span>
                         </div>
                     </div>
 
