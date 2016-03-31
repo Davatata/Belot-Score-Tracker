@@ -71,13 +71,13 @@
                         <td class="text-center">100</td>
                         <td class="text-center"><img src="images/spade.png" /></td>
                         <td class="text-center bet_success">150</td>
-                        <td class="text-center success">30</td>
+                        <td class="text-center success">80</td>
                         <!-- attacker, special, team1p, team1b, team2p, team2b -->
                         <td class="hidden">Team1</td>
                         <td class="hidden">Coincher</td>
                         <td class="hidden">100</td>
                         <td class="hidden">50</td>
-                        <td class="hidden">10</td>
+                        <td class="hidden">60</td>
                         <td class="hidden">20</td>
                     </tr>
                     <tr class="bet_row back_white">
@@ -99,7 +99,7 @@
             <!-- Opens a Modal/Form to start a new bet -->
             <a data-open="newBet" onclick="newBet()" class="button expanded ">New Bet</a>
             <div class="reveal" id="newBet" data-reveal><br/>
-                <form data-abide novalidate="">
+                <form id="myform" data-abide novalidate="">
                     <!-- Contract row -->
                     <div class="row">
                         <div class="small-6 columns">
@@ -187,12 +187,12 @@
 
                     <!-- Submit data or Reset all input fields -->
                     <div class="row">
-                        <fieldset class="small-6 columns">
-                            <button id="done_button" class="button expanded" id="done">Done</button>
-                        </fieldset>
-                        <fieldset class="small-6 columns">
+                        <div class="small-6 columns">
+                            <button id="done_button" class="button expanded" >Done</button>
+                        </div>
+                        <div class="small-6 columns">
                             <button id="reset_button" class="button expanded alert" type="reset" value="Reset">Reset</button>
-                        </fieldset>
+                        </div>
                     </div>
                 </form>
 
