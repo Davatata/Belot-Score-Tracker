@@ -69,7 +69,7 @@
                     <tr class="bet_row back_white">
                         <!-- bet, suit, team1points, team2points -->
                         <td class="text-center">100</td>
-                        <td class="text-center">Heart</td>
+                        <td class="text-center"><img src="images/spade.png" /></td>
                         <td class="text-center bet_success">150</td>
                         <td class="text-center success">30</td>
                         <!-- attacker, special, team1p, team1b, team2p, team2b -->
@@ -82,7 +82,7 @@
                     </tr>
                     <tr class="bet_row back_white">
                         <td class="text-center">190</td>
-                        <td class="text-center">Diamond</td>
+                        <td class="text-center"><img src="images/heart.png" /></td>
                         <td class="text-center bet_fail">0</td>
                         <td class="text-center">160</td>
                         <!-- attacker, special, team1p, team1b, team2p, team2b -->
@@ -125,11 +125,11 @@
                             <label><h4>Suit</h4>
                                 <select id="suit_chosen" required>
                                     <option value=""></option>
-                                    <option value="Spade">Spade</option>
-                                    <option value="Diamond">Diamond</option>
-                                    <option value="Club">Club</option>
-                                    <option value="Heart">Heart</option>
-                                    <option value="No Suit">No Suit</option>
+                                    <option value="spade" class="text-center">&spades;</option>
+                                    <option value="diamo">&diams;</option>
+                                    <option value="clubs">&clubs;</option>
+                                    <option value="heart">&hearts;</option>
+                                    <option value="A">No Suit</option>
                                 </select>
                             </label>
                         </div>
@@ -197,7 +197,7 @@
                 </form>
 
                 <!-- Modal close button -->
-                <button class="close-button" data-close aria-label="Close reveal" type="button">
+                <button class="close-button" onclick="resetModal();" data-close aria-label="Close reveal" type="button">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
