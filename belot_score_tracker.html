@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="foundation-6/css/foundation.css" />
         <link rel="stylesheet" href="belote_styles.css" />
         <script src="modernizr.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     </head>
     <body>
         <div class="large-6 medium-6 small-12" style="margin: 0 auto;">
@@ -29,7 +30,7 @@
 
             <div class="top-bar" id="example-menu">
                 <div class="top-bar-right">
-                        <a data-open="new_game_check" class="button expanded success" style="margin-bottom: 0;">New Game</a>
+                        <a data-open="new_game_check" onclick="closeTopBar()" class="button expanded success" style="margin-bottom: 0;">New Game</a>
                         <div class="reveal" id="new_game_check" data-reveal style="padding:150px 0">
                             <div class="row">
                                 <div class="small-12 columns text-center">
@@ -65,31 +66,45 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="back_white">
+                    <tr class="bet_row back_white">
+                        <!-- bet, suit, team1points, team2points -->
                         <td class="text-center">100</td>
                         <td class="text-center">Heart</td>
-                        <td class="text-center" style="background-color: lightgreen">100</td>
-                        <td class="text-center">0</td>
+                        <td class="text-center bet_success">150</td>
+                        <td class="text-center success">30</td>
+                        <!-- attacker, special, team1p, team1b, team2p, team2b -->
+                        <td class="hidden">Team1</td>
+                        <td class="hidden">Coincher</td>
+                        <td class="hidden">100</td>
+                        <td class="hidden">50</td>
+                        <td class="hidden">10</td>
+                        <td class="hidden">20</td>
                     </tr>
-                    <tr class="back_white">
-                        <td class="text-center">100</td>
+                    <tr class="bet_row back_white">
+                        <td class="text-center">190</td>
                         <td class="text-center">Diamond</td>
-                        <td class="text-center">100</td>
-                        <td class="text-center" style="background-color: lightpink">0</td>
+                        <td class="text-center bet_fail">0</td>
+                        <td class="text-center">160</td>
+                        <!-- attacker, special, team1p, team1b, team2p, team2b -->
+                        <td class="hidden">Team1</td>
+                        <td class="hidden"></td>
+                        <td class="hidden">0</td>
+                        <td class="hidden">0</td>
+                        <td class="hidden">160</td>
+                        <td class="hidden">30</td>
                     </tr>
                 </tbody>
             </table>
 
             <!-- Opens a Modal/Form to start a new bet -->
-            <a data-open="newBet" class="button expanded ">New Bet</a>
-            <div class="reveal" id="newBet" data-reveal>
-            <br/>
+            <a data-open="newBet" onclick="newBet()" class="button expanded ">New Bet</a>
+            <div class="reveal" id="newBet" data-reveal><br/>
                 <form data-abide novalidate="">
                     <!-- Contract row -->
                     <div class="row">
                         <div class="small-6 columns">
                               <label><h4>Contract</h4>
-                                    <input type="number" min="80" placeholder="80" aria-describedby="exampleHelpText" required>
+                                    <input id="contract_amt" type="number" min="80" placeholder="80" aria-describedby="exampleHelpText" required>
                                     <span class="form-error">
                                       Enter a bet
                                     </span>
@@ -97,7 +112,7 @@
                         </div>
                         <div class="small-6 columns">
                             <label><h4>Attacker</h4>
-                                <select id="select" required>
+                                <select id="attacker_chosen" required>
                                     <option value=""></option>
                                     <option value="Team1">Team1</option>
                                     <option value="Team2">Team2</option>
@@ -108,22 +123,22 @@
                     <div class="row">
                         <div class="small-6 columns">
                             <label><h4>Suit</h4>
-                                <select id="select" required>
+                                <select id="suit_chosen" required>
                                     <option value=""></option>
-                                    <option value="s">Spade</option>
-                                    <option value="d">Diamond</option>
-                                    <option value="c">Club</option>
-                                    <option value="h">Heart</option>
-                                    <option value="h">No Suit</option>
+                                    <option value="Spade">Spade</option>
+                                    <option value="Diamond">Diamond</option>
+                                    <option value="Club">Club</option>
+                                    <option value="Heart">Heart</option>
+                                    <option value="No Suit">No Suit</option>
                                 </select>
                             </label>
                         </div>
                         <div class="small-6 columns">
                             <label><h4>Special</h4>
-                                <select id="select">
+                                <select id="special_chosen">
                                     <option value=""></option>
-                                    <option value="coincher">Coincher</option>
-                                    <option value="sur-coincher">Sur-Coincher</option>
+                                    <option value="Coincher">Coincher</option>
+                                    <option value="Sur-Coincher">Sur-Coincher</option>
                                 </select>
                             </label>
                         </div>
@@ -141,7 +156,7 @@
                     <div class="row">
                         <div class="small-6 columns">
                             <label><h4>Points</h4>
-                                <input type="number" min="0" placeholder="0" aria-describedby="exampleHelpText" required>
+                                <input id="team1_points" type="number" min="0" placeholder="0" aria-describedby="exampleHelpText" required>
                                     <span class="form-error">
                                       Enter points
                                     </span>
@@ -149,7 +164,7 @@
                         </div>
                         <div class="small-6 columns">
                             <label><h4>Points</h4>
-                                <input type="number" min="0" placeholder="0" aria-describedby="exampleHelpText" required>
+                                <input id="team2_points" type="number" min="0" placeholder="0" aria-describedby="exampleHelpText" required>
                                     <span class="form-error">
                                       Enter points
                                     </span>
@@ -160,12 +175,12 @@
                     <div class="row">
                         <div class="small-6 columns">
                             <label><h4>Bonus</h4>
-                                <input type="number" min="0" placeholder="0" aria-describedby="exampleHelpText">
+                                <input id="team1_bonus" type="number" min="0" placeholder="0" aria-describedby="exampleHelpText">
                             </label>
                         </div>
                         <div class="small-6 columns">
                             <label><h4>Bonus</h4>
-                                <input type="number" min="0" placeholder="0" aria-describedby="exampleHelpText">
+                                <input id="team2_bonus" type="number" min="0" placeholder="0" aria-describedby="exampleHelpText">
                             </label>
                         </div>
                     </div>
@@ -173,10 +188,10 @@
                     <!-- Submit data or Reset all input fields -->
                     <div class="row">
                         <fieldset class="small-6 columns">
-                            <button class="button expanded" id="done">Done</button>
+                            <button id="done_button" class="button expanded" id="done">Done</button>
                         </fieldset>
                         <fieldset class="small-6 columns">
-                            <button class="button expanded alert" type="reset" value="Reset">Reset</button>
+                            <button id="reset_button" class="button expanded alert" type="reset" value="Reset">Reset</button>
                         </fieldset>
                     </div>
                 </form>

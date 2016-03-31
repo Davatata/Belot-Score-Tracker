@@ -1,3 +1,15 @@
 .back_white{
 	background-color: white !important;
 }
+
+.hidden{
+	display: none;
+}
+
+.bet_success{
+	background-color: lightgreen;
+}
+
+.bet_fail{
+	background-color: lightpink;
+}
