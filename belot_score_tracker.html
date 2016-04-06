@@ -28,6 +28,34 @@
                 <div class="title-bar-title">Belot Score Tracker</div>
             </div>
 
+            <div class="reveal" id="new_game_modal" data-reveal style="padding:150px 0">
+                <form id="teamsForm" data-abide novalidate="">
+                    <div class="row">
+                        <div class="small-12 columns">
+                            <p class="text-center" style="font-size: 2em">New Game</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-6 columns text-center">
+                            <label><h4>Team 1</h4>
+                                <input id="team1_name" maxlength="10" type="text" aria-describedby="exampleHelpText">
+                            </label>
+                        </div>
+                        <div class="small-6 columns text-center">
+                            <label><h4>Team 2</h4>
+                                <input id="team2_name" maxlength="10" type="text" aria-describedby="exampleHelpText">
+                            </label>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="small-12 columns">
+                            <a class="button  expanded" onclick="updateNames();">Done</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
             <div class="top-bar" id="example-menu">
                 <div class="top-bar-right">
                         <a data-open="new_game_check" onclick="closeTopBar()" class="button expanded success" style="margin-bottom: 0;">New Game</a>
@@ -61,38 +89,11 @@
                     <tr>
                         <th class="text-center">Bet</th>
                         <th class="text-center">Suit</th>
-                        <th class="text-center">Team1</th>
-                        <th class="text-center">Team2</th>
+                        <th class="text-center" id="team_1">Team1</th>
+                        <th class="text-center" id="team_2">Team2</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bet_row back_white" >
-                        <!-- bet, suit, team1points, team2points -->
-                        <td class="text-center">100</td>
-                        <td class="text-center"><img src="images/spade.png" /></td>
-                        <td class="text-center bet_success">150</td>
-                        <td class="text-center success">80</td>
-                        <!-- attacker, special, team1p, team1b, team2p, team2b -->
-                        <td class="hidden">Team1</td>
-                        <td class="hidden">Coincher</td>
-                        <td class="hidden">100</td>
-                        <td class="hidden">50</td>
-                        <td class="hidden">60</td>
-                        <td class="hidden">20</td>
-                    </tr>
-                    <tr class="bet_row back_white" >
-                        <td class="text-center">190</td>
-                        <td class="text-center"><img src="images/heart.png" /></td>
-                        <td class="text-center bet_fail">0</td>
-                        <td class="text-center">190</td>
-                        <!-- attacker, special, team1p, team1b, team2p, team2b -->
-                        <td class="hidden">Team1</td>
-                        <td class="hidden"></td>
-                        <td class="hidden">0</td>
-                        <td class="hidden">0</td>
-                        <td class="hidden">160</td>
-                        <td class="hidden">30</td>
-                    </tr>
                 </tbody>
             </table>
 
@@ -114,8 +115,8 @@
                             <label><h4>Attacker</h4>
                                 <select id="attacker_chosen" required>
                                     <option value=""></option>
-                                    <option value="Team1">Team1</option>
-                                    <option value="Team2">Team2</option>
+                                    <option value="Team1" id="team1_option">Team1</option>
+                                    <option value="Team2" id="team2_option">Team2</option>
                                 </select>
                             </label>
                         </div>
@@ -146,10 +147,10 @@
 
                     <div class="row">
                         <div class="small-6 columns text-center">
-                            <h3><b>Team1</b></h3>
+                            <h3><b id="team1_bold">Team1</b></h3>
                         </div>
                         <div class="small-6 columns text-center ">
-                            <h3><b>Team2</b></h3>
+                            <h3><b id="team2_bold">Team2</b></h3>
                         </div>
                     </div>
 
