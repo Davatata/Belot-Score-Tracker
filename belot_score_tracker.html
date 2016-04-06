@@ -58,7 +58,7 @@
 
             <div class="top-bar" id="example-menu">
                 <div class="top-bar-right">
-                        <a data-open="new_game_check" onclick="closeTopBar()" class="button expanded success" style="margin-bottom: 0;">New Game</a>
+                        <a data-open="new_game_check" onclick="toggleTopBar()" class="button expanded success" style="margin-bottom: 0;">New Game</a>
                         <div class="reveal" id="new_game_check" data-reveal style="padding:150px 0">
                             <div class="row">
                                 <div class="small-12 columns text-center">
@@ -68,7 +68,7 @@
                             <br/>
                             <div class="row">
                                 <div class="small-6 columns">
-                                    <a class="button  expanded" onclick="location.reload(true);">Yes</a>
+                                    <a class="button  expanded" onclick="clearCookies();location.reload(true);">Yes</a>
                                 </div>
                                 <div class="small-6 columns">
                                     <a class="button secondary expanded" data-close>Cancel</a>
@@ -92,13 +92,38 @@
                         <th class="text-center" id="team_1">Team1</th>
                         <th class="text-center" id="team_2">Team2</th>
                     </tr>
+                    <tr id="score_row" class="back_white">
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center" id="team1_total_score">0</td>
+                        <td class="text-center" id="team2_total_score">0</td>
+                    </tr>
                 </thead>
                 <tbody>
                 </tbody>
             </table>
 
+            <div class="reveal" id="win_modal" class="bet_success" data-reveal style="padding:150px 0">
+                <div class="row">
+                    <div class="small-12 columns text-center">
+                        <span id="winner_span" style="font-size: 2rem"></span>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <a class="button expanded" data-close>Close</a>
+                    </div>
+                </div>
+
+
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
             <!-- Opens a Modal/Form to start a new bet -->
-            <a data-open="newBet" onclick="newBet()" class="button expanded ">New Bet</a>
+            <a data-open="newBet" id="new_bet_button" onclick="newBet()" class="button expanded ">New Bet</a>
             <div class="reveal" id="newBet" data-reveal><br/>
                 <form id="myform" data-abide novalidate="">
                     <!-- Contract row -->

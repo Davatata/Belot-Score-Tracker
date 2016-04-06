@@ -6,6 +6,10 @@
 	display: none;
 }
 
+#win_modal{
+	background-color: lightgreen;
+}
+
 .bet_success{
 	background-color: lightgreen;
 }
@@ -13,3 +17,21 @@
 .bet_fail{
 	background-color: lightpink;
 }
+
+#score_row{
+	border-top: solid 2px purple;
+}
+
+.inactive{
+	pointer-events: none;
+}
+
+.active{
+	pointer-events: auto;
+}
+
+@media only screen and (min-width: 40.063em) {
+	.top-bar {
+		display: block;
+	}
+ } /* min-width 641px, medium screens */
