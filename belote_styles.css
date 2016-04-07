@@ -10,6 +10,18 @@
 	background-color: lightgreen;
 }
 
+#winning_score{
+	text-align:center;
+}
+
+#team1_name{
+	text-align:center;
+}
+
+#team2_name{
+	text-align:center;
+}
+
 .bet_success{
 	background-color: lightgreen;
 }
