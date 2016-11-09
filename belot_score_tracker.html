@@ -6,7 +6,7 @@
   3/19/16
 
   This is used to keep track of the popular card game belot(32 card bridge).
-  
+
 -->
 
 <!doctype html>
@@ -22,7 +22,7 @@
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     </head>
     <body class="felt_green">
-        <div class="large-6 medium-6 small-12" style="margin: 0 auto;">
+        <div class="large-4 medium-6 small-12" style="margin: 0 auto;">
             <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
                 <button class="menu-icon" type="button" data-toggle></button>
                 <div class="title-bar-title">Belot Score Tracker</div>
@@ -35,20 +35,23 @@
                             <label class="text-center" id="main_title">Belot</label>
                         </div>
                     </div>
+                    <br/>
                     <div class="row">
-                        <div class="small-6 columns text-center">
+                        <div class="small-8 medium-6 large-4 small-centered columns text-center">
                             <label><h4>Team 1</h4>
                                 <input id="team1_name" maxlength="10" type="text" aria-describedby="exampleHelpText">
                             </label>
                         </div>
-                        <div class="small-6 columns text-center">
+                    </div>
+                    <div class="row">
+                        <div class="small-8 small-centered columns text-center">
                             <label><h4>Team 2</h4>
                                 <input id="team2_name" maxlength="10" type="text" aria-describedby="exampleHelpText">
                             </label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="small-12 columns text-center">
+                        <div class="small-8 small-centered columns text-center">
                             <label><h4>Game up to</h4>
                                 <input id="winning_score"  min="1" type="number" >
                             </label>
@@ -56,7 +59,7 @@
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="small-12 columns">
+                        <div class="small-8 small-centered columns">
                             <a class="button  expanded" onclick="updateNames();">Done</a>
                         </div>
                     </div>
