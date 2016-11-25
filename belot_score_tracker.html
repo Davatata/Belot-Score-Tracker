@@ -1,0 +1,259 @@
+<!--
+
+  Belot Score Tracking
+
+  Created by David T.
+  3/19/16
+
+  This is used to keep track of the popular card game belot(32 card bridge).
+
+-->
+
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Belot Score Tracker</title>
+        <link rel="stylesheet" href="foundation-6/css/foundation.css" />
+        <link rel="stylesheet" href="belote_styles.css" />
+        <script src="modernizr.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    </head>
+    <body class="felt_green">
+        <div class="large-6 medium-6 small-12" style="margin: 0 auto;">
+            <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+                <button class="menu-icon" type="button" data-toggle></button>
+                <div class="title-bar-title">Belot Score Tracker</div>
+            </div>
+
+            <div class="full reveal felt_green" id="new_game_modal" data-reveal style="padding:50px 0">
+                <form id="teamsForm" data-abide novalidate="">
+                    <div class="row">
+                        <div class="small-12 columns">
+                            <label class="text-center" id="main_title">Belot</label>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="small-8 small-centered columns text-center">
+                            <label><h4>Team 1</h4>
+                                <input id="team1_name" maxlength="10" type="text" aria-describedby="exampleHelpText">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-8 small-centered columns text-center">
+                            <label><h4>Team 2</h4>
+                                <input id="team2_name" maxlength="10" type="text" aria-describedby="exampleHelpText">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-8 small-centered columns text-center">
+                            <label><h4>Game up to</h4>
+                                <input id="winning_score"  min="1" type="number" >
+                            </label>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="small-8 small-centered columns">
+                            <a class="button  expanded" onclick="updateNames();">Done</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="top-bar" id="example-menu">
+                <div class="top-bar-right">
+                        <a data-open="new_game_check" onclick="toggleTopBar()" class="button expanded success" style="margin-bottom: 0;">New Game</a>
+                        <div class="reveal felt_green" id="new_game_check" data-reveal style="padding:50px 0">
+                            <div class="row">
+                                <div class="small-12 columns text-center">
+                                    <label style="font-size: 2rem">Create a new game?</label>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="small-6 columns">
+                                    <a class="button  expanded" onclick="clearCookies();location.reload(true);">Yes</a>
+                                </div>
+                                <div class="small-6 columns">
+                                    <a class="button secondary expanded" data-close>Cancel</a>
+                                </div>
+                            </div>
+
+
+                          <button class="close-button" data-close aria-label="Close modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                </div>
+            </div>
+            <br/>
+
+            <table role="grid" id="score_table">
+                <thead>
+                    <tr>
+                        <th class="text-center">Bet</th>
+                        <th class="text-center">Suit</th>
+                        <th class="text-center" id="team_1">Team1</th>
+                        <th class="text-center" id="team_2">Team2</th>
+                    </tr>
+                    <tr id="score_row" class="back_white">
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center" id="team1_total_score">0</td>
+                        <td class="text-center" id="team2_total_score">0</td>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <div class="reveal" id="win_modal" class="bet_success" data-reveal style="padding:50px 0">
+                <div class="row">
+                    <div class="small-12 columns text-center">
+                        <span id="winner_span" style="font-size: 2rem"></span>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <a class="button expanded" data-close>Close</a>
+                    </div>
+                </div>
+
+
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <!-- Opens a Modal/Form to start a new bet -->
+            <a data-open="newBet" id="new_bet_button" onclick="newBet()" class="button expanded ">New Bet</a>
+            <div class="reveal felt_green" id="newBet" data-reveal><br/>
+                <form id="myform" data-abide novalidate="">
+                    <!-- Contract row -->
+                    <div class="row">
+                        <div class="small-6 columns">
+                              <label><h4>Contract</h4>
+                                    <input id="contract_amt" type="number" min="80" placeholder="80" aria-describedby="exampleHelpText" required>
+                                    <span class="form-error">
+                                      Enter a bet
+                                    </span>
+                              </label>
+                        </div>
+                        <div class="small-6 columns">
+                            <label><h4>Attacker</h4>
+                                <select id="attacker_chosen" required>
+                                    <option value=""></option>
+                                    <option value="Team1" id="team1_option">Team1</option>
+                                    <option value="Team2" id="team2_option">Team2</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <label><h4>Suit</h4>
+                                <select id="suit_chosen" required>
+                                    <option value=""></option>
+                                    <option value="spade" class="text-center">&spades;</option>
+                                    <option value="diamo">&diams;</option>
+                                    <option value="clubs">&clubs;</option>
+                                    <option value="heart">&hearts;</option>
+                                    <option value="NT">No Suit</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="small-6 columns">
+                            <label><h4>Special</h4>
+                                <select id="special_chosen">
+                                    <option value=""></option>
+                                    <option value="Coincher">Coincher</option>
+                                    <option value="Sur-Coincher">Sur-Coincher</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-6 columns text-center">
+                            <h3><b id="team1_bold">Team1</b></h3>
+                        </div>
+                        <div class="small-6 columns text-center ">
+                            <h3><b id="team2_bold">Team2</b></h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <label><h4>Points</h4>
+                                <input id="team1_points" type="number" min="0" placeholder="0" aria-describedby="exampleHelpText" required>
+                                    <span class="form-error">
+                                      Enter points
+                                    </span>
+                            </label>
+                        </div>
+                        <div class="small-6 columns">
+                            <label><h4>Points</h4>
+                                <input id="team2_points" type="number" min="0" placeholder="0" aria-describedby="exampleHelpText" required>
+                                    <span class="form-error">
+                                      Enter points
+                                    </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <label><h4>Bonus</h4>
+                                <input id="team1_bonus" type="number" min="0" placeholder="0" aria-describedby="exampleHelpText">
+                            </label>
+                        </div>
+                        <div class="small-6 columns">
+                            <label><h4>Bonus</h4>
+                                <input id="team2_bonus" type="number" min="0" placeholder="0" aria-describedby="exampleHelpText">
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit data or Reset all input fields -->
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <a id="done_button" onclick="createRow()" class="button expanded" >Done</a>
+                        </div>
+                        <div class="small-6 columns">
+                            <button id="reset_button" class="button expanded alert" type="reset" value="Reset">Reset</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-6 columns">
+                            <a id="done_button" onclick="randomize()" class="button expanded secondary" >Randomize</a>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Modal close button -->
+                <button class="close-button" onclick="resetModal();" data-close aria-label="Close reveal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+        </div>
+
+        <br/><br/>
+
+        <script src="clipboard.min.js"></script>
+        <script src="belot.min.js"></script>
+        <script src="foundation-6/js/vendor/jquery.min.js"></script>
+        <script src="foundation-6/js/vendor/what-input.min.js"></script>
+        <script src="foundation-6/js/foundation.min.js"></script>
+        <script>
+            $(document).foundation();
+        </script>
+    </body>
+</html>

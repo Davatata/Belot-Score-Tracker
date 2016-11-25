@@ -1,0 +1,83 @@
+.back_white{
+	background-color: white !important;
+}
+
+.hidden{
+	display: none;
+}
+
+#win_modal{
+	background-color: lightgreen;
+}
+
+#winning_score{
+	text-align:center;
+}
+
+#team1_name{
+	text-align:center;
+}
+
+#team2_name{
+	text-align:center;
+}
+
+.bet_success{
+	background-color: lightgreen;
+}
+
+.bet_fail{
+	background-color: lightpink;
+}
+
+#score_row{
+	border-top: solid 2px purple;
+}
+
+.inactive{
+	pointer-events: none;
+}
+
+.active{
+	pointer-events: auto;
+}
+
+.felt_green{
+	background-color: #277714;
+}
+
+.white_font{
+	color: white;
+}
+
+#score_table{
+	margin: -25px 0 0 0;
+}
+
+.is-invalid-input {
+	background-color: rgba(236, 88, 64, 0.80) !important;
+    border-color: #ec5840;
+}
+
+#team1_bold, #team2_bold{
+	color: white;
+	font-weight: bold;
+}
+
+label {
+	color:white;
+}
+
+#main_title{
+	font-size: 2em;
+}
+
+.close_button{
+	color:white !important;
+}
+
+@media only screen and (min-width: 40.063em) {
+	.top-bar {
+		display: block;
+	}
+ } /* min-width 641px, medium screens */
